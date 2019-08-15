@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus.AI;
@@ -16,25 +17,32 @@ namespace Wumpus
     {
         public Map mapData = new Map();
         Logic logic = new Logic();
+        int score = 0;
+        Player posStart;
+
         public Form1()
         {
             InitializeComponent();
             getMap();
-            initMap();
+            drawMap();
+            posStart = mapData.player;
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            mapData.player = logic.processGo(mapData);          
-            initMap();
-
+            mapData.player = logic.processGo(mapData);
+            if (logic.checkGold(mapData)) score += 100;
+            tbScore.Text = score.ToString();
+            drawMap();
+            if (posStart == mapData.player) btnPlay.Visible = false;
         }
 
         public void getMap()
         {
             mapData.insertResourceMap(Application.StartupPath + "\\map.txt");
         }
-        public void initMap()
+
+        public void drawMap()
         {
             string pathImage = "";
             int x = mapData.player.locationX;
@@ -70,7 +78,7 @@ namespace Wumpus
                                     else if (mapData.map[i][j].Wumpus == true) pathImage = "\\Resource\\monster.png";
                                     else pathImage = "\\Resource\\white.png";
                                 }
-                                pan.BackColor = Color.White;
+                                //pan.BackColor = Color.White;
                                 pan.BackgroundImageLayout = ImageLayout.Stretch;
                                 pan.BackgroundImage = Image.FromFile(Application.StartupPath + pathImage);
                             }
@@ -82,7 +90,8 @@ namespace Wumpus
                         {
                             if (pan.GetType() == typeof(Panel) && pan.TabIndex == (j + i * 10 + 9))
                             {
-                                pan.BackColor = Color.LightGray;
+                                pan.BackgroundImageLayout = ImageLayout.Stretch;
+                                pan.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resource\\gray.png");
                             }
                         }
                     }
@@ -90,6 +99,25 @@ namespace Wumpus
 
             }
             mapData.map[x][y].Player = false;
+        }
+
+        private void BtnAuto_Click(object sender, EventArgs e)
+        {
+            do
+            {
+                BtnPlay_Click(sender, e);
+                Thread.Sleep(300);
+            } while (posStart != mapData.player);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            mapData = new Map();
+            logic = new Logic();
+            score = 0;
+            mapData.randomMap();
+            drawMap();
+            posStart = mapData.player;
         }
     }
 }

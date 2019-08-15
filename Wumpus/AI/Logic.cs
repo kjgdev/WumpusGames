@@ -27,7 +27,7 @@ namespace Wumpus.AI
             }
         }
 
-        public bool gameDie( Map mapData)
+        public bool gameDie(Map mapData)
         {
             if (mapData.map[mapData.player.locationX][mapData.player.locationY].Pit || mapData.map[mapData.player.locationX][mapData.player.locationY].Wumpus) return true;
             return false;
@@ -228,13 +228,14 @@ namespace Wumpus.AI
             if (checkWarning(x - 1, y)) { playerOptimal.Add(new Player().setLocation(x - 1, y)); }
             if (checkWarning(x, y+1)) { playerOptimal.Add(new Player().setLocation(x, y+1)); }
             if (checkWarning(x, y-1)) { playerOptimal.Add(new Player().setLocation(x, y-1)); }
-
+            
             Random random = new Random();
+            
             int n = 0;
             if(playerOptimal.Count == 0)
             {
-                playerOptimal.Add(new Player().setLocation(backTracking[backTracking.Count-2].locationX,backTracking[backTracking.Count-2].locationY));
-                backTracking.RemoveAt(backTracking.Count-1);
+                    playerOptimal.Add(new Player().setLocation(backTracking[backTracking.Count -1].locationX, backTracking[backTracking.Count - 1].locationY));
+                    backTracking.RemoveAt(backTracking.Count - 1);
             }
             else
             {
@@ -244,6 +245,18 @@ namespace Wumpus.AI
             return playerOptimal[n];
             
         }
+
+        public bool checkGold(Map mapData)
+        {
+            if (mapData.map[mapData.player.locationX][mapData.player.locationY].Gold)
+            {
+                mapData.map[mapData.player.locationX][mapData.player.locationY].Gold = false;
+                return true;
+            }
+            return false;
+        }
+
+    
 
         bool checkWarning(int x,int y)
         {

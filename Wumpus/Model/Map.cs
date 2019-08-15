@@ -104,5 +104,85 @@ namespace Wumpus.Model
                 }
             }
         }
+        public void addBreeze(int x, int y)
+        {
+            if (x < 0 || x > 9 || y < 0 || y > 9) return;
+            map[x][y].Breeze = true;
+        }
+
+        public void addStench(int x, int y)
+        {
+            if (x < 0 || x > 9 || y < 0 || y > 9) return;
+            map[x][y].Stench = true;
+        }
+        public void randomMap()
+        {
+            int numberWumpus = 5;
+            int numberPit = 5;
+            int numberGold = 5;
+
+            Random random = new Random();
+
+            int x;
+            int y;
+
+            for(int i = 0; i < numberWumpus; i++)
+            {
+                do
+                {
+                    x = random.Next(0, 9);
+                    y = random.Next(0, 9);
+                }
+                while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true);
+
+                map[x][y].Wumpus = true;
+                addStench(x + 1, y);
+                addStench(x - 1, y);
+                addStench(x, y + 1);
+                addStench(x, y - 1);
+            }
+
+            for (int i = 0; i < numberPit; i++)
+            {
+                do
+                {
+                    x = random.Next(0, 9);
+                    y = random.Next(0, 9);
+                }
+                while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true);
+
+                map[x][y].Pit = true;
+                addBreeze(x + 1, y);
+                addBreeze(x - 1, y);
+                addBreeze(x, y + 1);
+                addBreeze(x, y - 1);               
+            }
+
+            for (int i = 0; i < numberPit; i++)
+            {
+                do
+                {
+                    x = random.Next(0, 9);
+                    y = random.Next(0, 9);
+                }
+                while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true);
+
+                map[x][y].Gold = true;
+            }
+
+            for (int i = 0; i < numberPit; i++)
+            {
+                do
+                {
+                    x = random.Next(0, 9);
+                    y = random.Next(0, 9);
+                }
+                while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true|| map[x][y].Breeze == true || map[x][y].Stench == true);
+
+                map[x][y].Player = true;
+                player.locationX = x;
+                player.locationY = y;
+            }
+        }     
     }
 }

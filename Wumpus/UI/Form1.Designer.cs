@@ -130,16 +130,21 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel109 = new System.Windows.Forms.Panel();
+            this.btnAuto = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbScore = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel109.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(1163, 156);
+            this.btnPlay.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.Location = new System.Drawing.Point(1021, 288);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(150, 50);
             this.btnPlay.TabIndex = 1;
-            this.btnPlay.Text = "Play";
+            this.btnPlay.Text = "Play Step";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
             // 
@@ -1255,11 +1260,56 @@
             this.panel109.Size = new System.Drawing.Size(962, 903);
             this.panel109.TabIndex = 3;
             // 
+            // btnAuto
+            // 
+            this.btnAuto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuto.Location = new System.Drawing.Point(1287, 288);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(150, 50);
+            this.btnAuto.TabIndex = 4;
+            this.btnAuto.Text = "Auto";
+            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.Click += new System.EventHandler(this.BtnAuto_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1014, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 40);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Score:";
+            // 
+            // tbScore
+            // 
+            this.tbScore.AutoSize = true;
+            this.tbScore.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbScore.Location = new System.Drawing.Point(1139, 111);
+            this.tbScore.Name = "tbScore";
+            this.tbScore.Size = new System.Drawing.Size(0, 40);
+            this.tbScore.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1101, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(250, 50);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Random Map";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 903);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tbScore);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.panel109);
             this.Controls.Add(this.btnPlay);
             this.MaximizeBox = false;
@@ -1270,6 +1320,7 @@
             this.Text = "Form1";
             this.panel109.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1376,6 +1427,10 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel109;
+        private System.Windows.Forms.Button btnAuto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tbScore;
+        private System.Windows.Forms.Button button1;
     }
 }
 
