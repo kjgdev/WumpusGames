@@ -15,31 +15,19 @@ namespace Wumpus
 {
     public partial class Form1 : Form
     {
-        public Map mapData = new Map();
-        Logic logic = new Logic();
-        int score = 0;
-        Player posStart;
+        public Map mapData;
+        Logic logic;
+        int score;
 
         public Form1()
         {
             InitializeComponent();
-            getMap();
+            mapData = new Map();
+            logic = new Logic();
+            score = 0;
+            mapData.randomMap();
             drawMap();
-            posStart = mapData.player;
-        }
-
-        private void BtnPlay_Click(object sender, EventArgs e)
-        {
-            mapData.player = logic.processGo(mapData);
-            if (logic.checkGold(mapData)) score += 100;
-            tbScore.Text = score.ToString();
-            drawMap();
-            if (posStart == mapData.player) btnPlay.Visible = false;
-        }
-
-        public void getMap()
-        {
-            mapData.insertResourceMap(Application.StartupPath + "\\map.txt");
+            cbSpeed.SelectedIndex = 0;
         }
 
         public void drawMap()
@@ -48,8 +36,7 @@ namespace Wumpus
             int x = mapData.player.locationX;
             int y = mapData.player.locationY;
             mapData.map[x][y].Player = true;
-            mapData.map[x][y].Visiable = true;
-            
+            mapData.map[x][y].Visiable = true;            
 
             for (int i = 0; i < 10; i++)
             {
@@ -78,7 +65,7 @@ namespace Wumpus
                                     else if (mapData.map[i][j].Wumpus == true) pathImage = "\\Resource\\monster.png";
                                     else pathImage = "\\Resource\\white.png";
                                 }
-                                //pan.BackColor = Color.White;
+                                pan.BackColor = Color.White;
                                 pan.BackgroundImageLayout = ImageLayout.Stretch;
                                 pan.BackgroundImage = Image.FromFile(Application.StartupPath + pathImage);
                             }
@@ -90,8 +77,10 @@ namespace Wumpus
                         {
                             if (pan.GetType() == typeof(Panel) && pan.TabIndex == (j + i * 10 + 9))
                             {
-                                pan.BackgroundImageLayout = ImageLayout.Stretch;
-                                pan.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resource\\gray.png");
+                                pan.BackColor = Color.Gray;
+                                pan.BackgroundImage = null;
+                                //pan.BackgroundImageLayout = ImageLayout.Stretch;
+                                //pan.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resource\\gray.png");
                             }
                         }
                     }
@@ -99,15 +88,36 @@ namespace Wumpus
 
             }
             mapData.map[x][y].Player = false;
+            tbState.Text = "";
+            if (mapData.map[x][y].Breeze) tbState.Text += "Breeze ";
+            if (mapData.map[x][y].Stench) tbState.Text += "Stench ";
+            if (mapData.map[x][y].Gold) tbState.Text += "Gold";
+            if (mapData.map[x][y].Wumpus) tbState.Text += "Wumpus";
+            if (mapData.map[x][y].Pit) tbState.Text += "Pit";
+
         }
 
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            if (logic.checkGold(mapData)) score += 100;
+            tbScore.Text = score.ToString();
+            drawMap();
+            if (!logic.processGo(mapData))
+            {
+                timer1.Enabled = false;
+                DialogResult result = MessageBox.Show("End Game!", "!!", MessageBoxButtons.RetryCancel);
+                if(result == DialogResult.Retry)
+                {
+                    new Form1();
+                    Button1_Click(sender, e);
+                }
+                if(result == DialogResult.Cancel) { Close(); }
+               
+            }
+        }
         private void BtnAuto_Click(object sender, EventArgs e)
         {
-            do
-            {
-                BtnPlay_Click(sender, e);
-                Thread.Sleep(300);
-            } while (posStart != mapData.player);
+            timer1.Enabled = true;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -117,7 +127,25 @@ namespace Wumpus
             score = 0;
             mapData.randomMap();
             drawMap();
-            posStart = mapData.player;
+        }
+
+        private void ImportMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                mapData = new Map();
+                logic = new Logic();
+                score = 0;
+                mapData.insertResourceMap(fileDialog.FileName);
+                drawMap();
+            }            
+        }
+
+        private void CbSpeed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            timer1.Interval = int.Parse(cbSpeed.SelectedItem.ToString());
         }
     }
 }

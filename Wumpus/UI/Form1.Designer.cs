@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnPlay = new System.Windows.Forms.Button();
             this.panel91 = new System.Windows.Forms.Panel();
             this.panel92 = new System.Windows.Forms.Panel();
@@ -134,15 +135,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbScore = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbState = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbSpeed = new System.Windows.Forms.ComboBox();
             this.panel109.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
             // 
             this.btnPlay.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(1021, 288);
+            this.btnPlay.Location = new System.Drawing.Point(1021, 289);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(150, 50);
+            this.btnPlay.Size = new System.Drawing.Size(192, 50);
             this.btnPlay.TabIndex = 1;
             this.btnPlay.Text = "Play Step";
             this.btnPlay.UseVisualStyleBackColor = true;
@@ -1254,18 +1268,18 @@
             this.panel109.Controls.Add(this.panel8);
             this.panel109.Controls.Add(this.panel1);
             this.panel109.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel109.Location = new System.Drawing.Point(0, 0);
+            this.panel109.Location = new System.Drawing.Point(0, 28);
             this.panel109.Margin = new System.Windows.Forms.Padding(4);
             this.panel109.Name = "panel109";
-            this.panel109.Size = new System.Drawing.Size(962, 903);
+            this.panel109.Size = new System.Drawing.Size(962, 895);
             this.panel109.TabIndex = 3;
             // 
             // btnAuto
             // 
             this.btnAuto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuto.Location = new System.Drawing.Point(1287, 288);
+            this.btnAuto.Location = new System.Drawing.Point(1021, 433);
             this.btnAuto.Name = "btnAuto";
-            this.btnAuto.Size = new System.Drawing.Size(150, 50);
+            this.btnAuto.Size = new System.Drawing.Size(192, 50);
             this.btnAuto.TabIndex = 4;
             this.btnAuto.Text = "Auto";
             this.btnAuto.UseVisualStyleBackColor = true;
@@ -1275,9 +1289,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1014, 111);
+            this.label1.Location = new System.Drawing.Point(1001, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 40);
+            this.label1.Size = new System.Drawing.Size(116, 40);
             this.label1.TabIndex = 5;
             this.label1.Text = "Score:";
             // 
@@ -1285,7 +1299,7 @@
             // 
             this.tbScore.AutoSize = true;
             this.tbScore.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbScore.Location = new System.Drawing.Point(1139, 111);
+            this.tbScore.Location = new System.Drawing.Point(1123, 74);
             this.tbScore.Name = "tbScore";
             this.tbScore.Size = new System.Drawing.Size(0, 40);
             this.tbScore.TabIndex = 6;
@@ -1293,32 +1307,145 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1101, 390);
+            this.button1.Location = new System.Drawing.Point(1021, 595);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 50);
+            this.button1.Size = new System.Drawing.Size(192, 50);
             this.button1.TabIndex = 7;
             this.button1.Text = "Random Map";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.BtnPlay_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1001, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 40);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "State:";
+            // 
+            // tbState
+            // 
+            this.tbState.AutoSize = true;
+            this.tbState.Font = new System.Drawing.Font("Century Gothic", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbState.Location = new System.Drawing.Point(1123, 173);
+            this.tbState.Name = "tbState";
+            this.tbState.Size = new System.Drawing.Size(0, 40);
+            this.tbState.TabIndex = 9;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1482, 28);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importMapToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // importMapToolStripMenuItem
+            // 
+            this.importMapToolStripMenuItem.Name = "importMapToolStripMenuItem";
+            this.importMapToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importMapToolStripMenuItem.Text = "Import Map";
+            this.importMapToolStripMenuItem.Click += new System.EventHandler(this.ImportMapToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.helpToolStripMenuItem1});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // helpToolStripMenuItem1
+            // 
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem1.Text = "Help";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1064, 503);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 23);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Speed:";
+            // 
+            // cbSpeed
+            // 
+            this.cbSpeed.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSpeed.FormattingEnabled = true;
+            this.cbSpeed.Items.AddRange(new object[] {
+            "50",
+            "100",
+            "200",
+            "500"});
+            this.cbSpeed.Location = new System.Drawing.Point(1159, 502);
+            this.cbSpeed.Name = "cbSpeed";
+            this.cbSpeed.Size = new System.Drawing.Size(121, 29);
+            this.cbSpeed.TabIndex = 12;
+            this.cbSpeed.SelectedIndexChanged += new System.EventHandler(this.CbSpeed_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 903);
+            this.ClientSize = new System.Drawing.Size(1482, 923);
+            this.Controls.Add(this.cbSpeed);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbState);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbScore);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.panel109);
             this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.menuStrip1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1500, 950);
-            this.MinimumSize = new System.Drawing.Size(1500, 950);
+            this.MaximumSize = new System.Drawing.Size(1500, 970);
+            this.MinimumSize = new System.Drawing.Size(1500, 970);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.RightToLeftLayout = true;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.panel109.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1431,6 +1558,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label tbScore;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label tbState;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importMapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbSpeed;
     }
 }
 

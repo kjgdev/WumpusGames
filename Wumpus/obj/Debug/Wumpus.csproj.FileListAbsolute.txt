@@ -8,3 +8,13 @@ D:\Source\C#\Wumpus\Wumpus\obj\Debug\Wumpus.csproj.GenerateResource.cache
 D:\Source\C#\Wumpus\Wumpus\obj\Debug\Wumpus.csproj.CoreCompileInputs.cache
 D:\Source\C#\Wumpus\Wumpus\obj\Debug\Wumpus.exe
 D:\Source\C#\Wumpus\Wumpus\obj\Debug\Wumpus.pdb
+D:\Source\Git\WumpusGames\Wumpus\bin\Debug\Wumpus.exe.config
+D:\Source\Git\WumpusGames\Wumpus\bin\Debug\Wumpus.exe
+D:\Source\Git\WumpusGames\Wumpus\bin\Debug\Wumpus.pdb
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.csprojAssemblyReference.cache
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.Form1.resources
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.Properties.Resources.resources
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.csproj.GenerateResource.cache
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.csproj.CoreCompileInputs.cache
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.exe
+D:\Source\Git\WumpusGames\Wumpus\obj\Debug\Wumpus.pdb

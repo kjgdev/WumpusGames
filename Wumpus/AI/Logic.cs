@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Wumpus.Model;
 
 namespace Wumpus.AI
@@ -216,7 +217,7 @@ namespace Wumpus.AI
 
         }
 
-        public Player processGo(Map mapData)
+        public bool processGo(Map mapData)
         {
             int x = mapData.player.locationX;
             int y = mapData.player.locationY;
@@ -234,15 +235,20 @@ namespace Wumpus.AI
             int n = 0;
             if(playerOptimal.Count == 0)
             {
-                    playerOptimal.Add(new Player().setLocation(backTracking[backTracking.Count -1].locationX, backTracking[backTracking.Count - 1].locationY));
-                    backTracking.RemoveAt(backTracking.Count - 1);
+                if (backTracking.Count >1)
+                {
+                    playerOptimal.Add(new Player().setLocation(backTracking[backTracking.Count - 2].locationX, backTracking[backTracking.Count - 2].locationY));
+                    backTracking.RemoveAt(backTracking.Count-1);
+                }
+                else return false;
             }
             else
             {
                 n = random.Next(0, playerOptimal.Count - 1);
                 backTracking.Add(playerOptimal[n]);
             }
-            return playerOptimal[n];
+            mapData.player = playerOptimal[n];
+            return true;
             
         }
 
