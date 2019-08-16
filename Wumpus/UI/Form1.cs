@@ -151,5 +151,20 @@ namespace Wumpus
         {
             timer1.Interval = int.Parse(cbSpeed.SelectedItem.ToString());
         }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Project Wumpus Game")
+        }
+
+        private void HelpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
