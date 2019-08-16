@@ -115,12 +115,8 @@ namespace Wumpus.Model
             if (x < 0 || x > 9 || y < 0 || y > 9) return;
             map[x][y].Stench = true;
         }
-        public void randomMap()
+        public void randomMap(int numberWumpus, int numberPit, int numberGold)
         {
-            int numberWumpus = 5;
-            int numberPit = 5;
-            int numberGold = 5;
-
             Random random = new Random();
 
             int x;

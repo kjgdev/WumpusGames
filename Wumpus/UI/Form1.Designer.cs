@@ -147,6 +147,12 @@
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.cbSpeed = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbGold = new System.Windows.Forms.ComboBox();
+            this.cbW = new System.Windows.Forms.ComboBox();
+            this.cbP = new System.Windows.Forms.ComboBox();
             this.panel109.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1363,14 +1369,14 @@
             // importMapToolStripMenuItem
             // 
             this.importMapToolStripMenuItem.Name = "importMapToolStripMenuItem";
-            this.importMapToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importMapToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.importMapToolStripMenuItem.Text = "Import Map";
             this.importMapToolStripMenuItem.Click += new System.EventHandler(this.ImportMapToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -1385,13 +1391,13 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // label3
@@ -1400,9 +1406,9 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(1064, 503);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 23);
+            this.label3.Size = new System.Drawing.Size(64, 23);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Speed:";
+            this.label3.Text = "Timer:";
             // 
             // cbSpeed
             // 
@@ -1413,17 +1419,95 @@
             "100",
             "200",
             "500"});
-            this.cbSpeed.Location = new System.Drawing.Point(1159, 502);
+            this.cbSpeed.Location = new System.Drawing.Point(1183, 503);
             this.cbSpeed.Name = "cbSpeed";
             this.cbSpeed.Size = new System.Drawing.Size(121, 29);
             this.cbSpeed.TabIndex = 12;
             this.cbSpeed.SelectedIndexChanged += new System.EventHandler(this.CbSpeed_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1064, 670);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 23);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Gold:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1064, 731);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 23);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Wumpus";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1064, 784);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 23);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Pit";
+            // 
+            // cbGold
+            // 
+            this.cbGold.FormattingEnabled = true;
+            this.cbGold.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbGold.Location = new System.Drawing.Point(1183, 669);
+            this.cbGold.Name = "cbGold";
+            this.cbGold.Size = new System.Drawing.Size(121, 24);
+            this.cbGold.TabIndex = 15;
+            // 
+            // cbW
+            // 
+            this.cbW.FormattingEnabled = true;
+            this.cbW.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbW.Location = new System.Drawing.Point(1183, 731);
+            this.cbW.Name = "cbW";
+            this.cbW.Size = new System.Drawing.Size(121, 24);
+            this.cbW.TabIndex = 15;
+            // 
+            // cbP
+            // 
+            this.cbP.FormattingEnabled = true;
+            this.cbP.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbP.Location = new System.Drawing.Point(1183, 784);
+            this.cbP.Name = "cbP";
+            this.cbP.Size = new System.Drawing.Size(121, 24);
+            this.cbP.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 923);
+            this.Controls.Add(this.cbP);
+            this.Controls.Add(this.cbW);
+            this.Controls.Add(this.cbGold);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.cbSpeed);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbState);
@@ -1435,7 +1519,6 @@
             this.Controls.Add(this.panel109);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.menuStrip1);
-            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1500, 970);
             this.MinimumSize = new System.Drawing.Size(1500, 970);
             this.Name = "Form1";
@@ -1570,6 +1653,12 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbSpeed;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbGold;
+        private System.Windows.Forms.ComboBox cbW;
+        private System.Windows.Forms.ComboBox cbP;
     }
 }
 

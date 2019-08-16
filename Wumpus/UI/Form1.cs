@@ -25,9 +25,13 @@ namespace Wumpus
             mapData = new Map();
             logic = new Logic();
             score = 0;
-            mapData.randomMap();
+             cbSpeed.SelectedIndex = 0;
+            cbGold.SelectedIndex = 0;
+            cbW.SelectedIndex = 0;
+            cbP.SelectedIndex = 0;
+            mapData.randomMap(int.Parse(cbGold.SelectedItem.ToString()), int.Parse(cbW.SelectedItem.ToString()), int.Parse(cbP.SelectedItem.ToString()));
             drawMap();
-            cbSpeed.SelectedIndex = 0;
+           
         }
 
         public void drawMap()
@@ -102,7 +106,7 @@ namespace Wumpus
             if (logic.checkGold(mapData)) score += 100;
             tbScore.Text = score.ToString();
             drawMap();
-            if (!logic.processGo(mapData))
+            if (!logic.processGo(mapData) || logic.gameDie(mapData))
             {
                 timer1.Enabled = false;
                 DialogResult result = MessageBox.Show("End Game!", "!!", MessageBoxButtons.RetryCancel);
@@ -125,7 +129,7 @@ namespace Wumpus
             mapData = new Map();
             logic = new Logic();
             score = 0;
-            mapData.randomMap();
+            mapData.randomMap(int.Parse(cbGold.SelectedItem.ToString()), int.Parse(cbW.SelectedItem.ToString()), int.Parse(cbP.SelectedItem.ToString()));
             drawMap();
         }
 
