@@ -25,13 +25,13 @@ namespace Wumpus
             mapData = new Map();
             logic = new Logic();
             score = 0;
-             cbSpeed.SelectedIndex = 0;
+            cbSpeed.SelectedIndex = 0;
             cbGold.SelectedIndex = 0;
             cbW.SelectedIndex = 0;
             cbP.SelectedIndex = 0;
             mapData.randomMap(int.Parse(cbGold.SelectedItem.ToString()), int.Parse(cbW.SelectedItem.ToString()), int.Parse(cbP.SelectedItem.ToString()));
             drawMap();
-           
+
         }
 
         public void drawMap()
@@ -40,17 +40,17 @@ namespace Wumpus
             int x = mapData.player.locationX;
             int y = mapData.player.locationY;
             mapData.map[x][y].Player = true;
-            mapData.map[x][y].Visiable = true;            
+            mapData.map[x][y].Visiable = true;
 
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if (mapData.map[i][j].Visiable == true)
+                    foreach (Control pan in panel109.Controls)
                     {
-                        foreach (Control pan in panel109.Controls)
+                        if (pan.GetType() == typeof(Panel) && pan.TabIndex == (j + i * 10 + 9))
                         {
-                            if (pan.GetType() == typeof(Panel) && pan.TabIndex == (j + i * 10 + 9))
+                            if (mapData.map[i][j].Visiable == true)
                             {
                                 if (mapData.map[i][j].Player == true)
                                 {
@@ -73,23 +73,39 @@ namespace Wumpus
                                 pan.BackgroundImageLayout = ImageLayout.Stretch;
                                 pan.BackgroundImage = Image.FromFile(Application.StartupPath + pathImage);
                             }
-                        }
-                    }
-                    else
-                    {
-                        foreach (Control pan in panel109.Controls)
-                        {
-                            if (pan.GetType() == typeof(Panel) && pan.TabIndex == (j + i * 10 + 9))
+                            else if(mapData.map[i][j].Visiable == false && cbShowMap.Checked == true)
+                            {
+                               
+                                if (mapData.map[i][j].Player == true)
+                                {
+                                    pathImage = "\\Resource\\player.png";
+                                }
+                                else
+                                {
+                                    if (mapData.map[i][j].Breeze == true && mapData.map[i][j].Stench == true) pathImage = "\\Resource\\breeze+stench.png";
+                                    else if (mapData.map[i][j].Breeze == true && mapData.map[i][j].Gold == true) pathImage = "\\Resource\\breeze+gold.png";
+                                    else if (mapData.map[i][j].Stench == true && mapData.map[i][j].Gold == true) pathImage = "\\Resource\\stench+gold.png";
+                                    else if (mapData.map[i][j].Stench == true && mapData.map[i][j].Gold == true && mapData.map[i][j].Breeze) pathImage = "\\Resource\\breeze+stench+gold.png";
+                                    else if (mapData.map[i][j].Breeze == true) pathImage = "\\Resource\\breeze.png";
+                                    else if (mapData.map[i][j].Stench == true) pathImage = "\\Resource\\stench.png";
+                                    else if (mapData.map[i][j].Gold == true) pathImage = "\\Resource\\gold.png";
+                                    else if (mapData.map[i][j].Pit == true) pathImage = "\\Resource\\pit.png";
+                                    else if (mapData.map[i][j].Wumpus == true) pathImage = "\\Resource\\monster.png";
+                                    else pathImage = "\\Resource\\white.png";
+                                    
+                                }
+                                pan.BackgroundImageLayout = ImageLayout.Stretch;
+                                pan.BackgroundImage = Image.FromFile(Application.StartupPath + pathImage);
+                                pan.BackColor = Color.Gray;
+                            }
+                            else
                             {
                                 pan.BackColor = Color.Gray;
                                 pan.BackgroundImage = null;
-                                //pan.BackgroundImageLayout = ImageLayout.Stretch;
-                                //pan.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resource\\gray.png");
                             }
                         }
                     }
                 }
-
             }
             mapData.map[x][y].Player = false;
             tbState.Text = "";
@@ -110,13 +126,13 @@ namespace Wumpus
             {
                 timer1.Enabled = false;
                 DialogResult result = MessageBox.Show("End Game!", "!!", MessageBoxButtons.RetryCancel);
-                if(result == DialogResult.Retry)
+                if (result == DialogResult.Retry)
                 {
                     new Form1();
                     Button1_Click(sender, e);
                 }
-                if(result == DialogResult.Cancel) { Close(); }
-               
+                if (result == DialogResult.Cancel) { Close(); }
+
             }
         }
         private void BtnAuto_Click(object sender, EventArgs e)
@@ -144,7 +160,7 @@ namespace Wumpus
                 score = 0;
                 mapData.insertResourceMap(fileDialog.FileName);
                 drawMap();
-            }            
+            }
         }
 
         private void CbSpeed_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,12 +175,17 @@ namespace Wumpus
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Project Wumpus Game")
+            MessageBox.Show("Project Wumpus Game");
         }
 
         private void HelpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CbShowMap_CheckedChanged(object sender, EventArgs e)
+        {
+            drawMap();
         }
     }
 }

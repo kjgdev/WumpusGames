@@ -32,7 +32,7 @@ namespace Wumpus.Model
 
         public void insertResourceMap(string path)
         {
-            
+
             string[][] textMap = new string[10][];
             for (int i = 0; i < 10; i++)
             {
@@ -48,7 +48,7 @@ namespace Wumpus.Model
                 {
                     var line = rd.ReadLine();
                     var value = line.Split('.');
-                    for(int i = 0; i < 10; i++)
+                    for (int i = 0; i < 10; i++)
                     {
                         textMap[row][i] = value[i];
                     }
@@ -57,9 +57,9 @@ namespace Wumpus.Model
             }
             catch { }
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for(int j = 0; j < 10; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     string str = textMap[j][i];
                     switch (str)
@@ -122,7 +122,7 @@ namespace Wumpus.Model
             int x;
             int y;
 
-            for(int i = 0; i < numberWumpus; i++)
+            for (int i = 0; i < numberWumpus; i++)
             {
                 do
                 {
@@ -151,7 +151,7 @@ namespace Wumpus.Model
                 addBreeze(x + 1, y);
                 addBreeze(x - 1, y);
                 addBreeze(x, y + 1);
-                addBreeze(x, y - 1);               
+                addBreeze(x, y - 1);
             }
 
             for (int i = 0; i < numberPit; i++)
@@ -165,20 +165,16 @@ namespace Wumpus.Model
 
                 map[x][y].Gold = true;
             }
-
-            for (int i = 0; i < numberPit; i++)
+            do
             {
-                do
-                {
-                    x = random.Next(0, 9);
-                    y = random.Next(0, 9);
-                }
-                while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true|| map[x][y].Breeze == true || map[x][y].Stench == true);
-
-                map[x][y].Player = true;
-                player.locationX = x;
-                player.locationY = y;
+                x = random.Next(0, 9);
+                y = random.Next(0, 9);
             }
-        }     
+            while (map[x][y].Wumpus == true || map[x][y].Pit == true || map[x][y].Gold == true || map[x][y].Breeze == true || map[x][y].Stench == true);
+
+            map[x][y].Player = true;
+            player.locationX = x;
+            player.locationY = y;
+        }
     }
 }

@@ -153,6 +153,7 @@
             this.cbGold = new System.Windows.Forms.ComboBox();
             this.cbW = new System.Windows.Forms.ComboBox();
             this.cbP = new System.Windows.Forms.ComboBox();
+            this.cbShowMap = new System.Windows.Forms.CheckBox();
             this.panel109.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1376,7 +1377,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -1392,14 +1393,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.HelpToolStripMenuItem1_Click);
             // 
@@ -1500,11 +1501,24 @@
             this.cbP.Size = new System.Drawing.Size(121, 24);
             this.cbP.TabIndex = 15;
             // 
+            // cbShowMap
+            // 
+            this.cbShowMap.AutoSize = true;
+            this.cbShowMap.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbShowMap.Location = new System.Drawing.Point(1011, 50);
+            this.cbShowMap.Name = "cbShowMap";
+            this.cbShowMap.Size = new System.Drawing.Size(121, 25);
+            this.cbShowMap.TabIndex = 16;
+            this.cbShowMap.Text = "Show Map";
+            this.cbShowMap.UseVisualStyleBackColor = true;
+            this.cbShowMap.CheckedChanged += new System.EventHandler(this.CbShowMap_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 923);
+            this.Controls.Add(this.cbShowMap);
             this.Controls.Add(this.cbP);
             this.Controls.Add(this.cbW);
             this.Controls.Add(this.cbGold);
@@ -1662,6 +1676,7 @@
         private System.Windows.Forms.ComboBox cbGold;
         private System.Windows.Forms.ComboBox cbW;
         private System.Windows.Forms.ComboBox cbP;
+        private System.Windows.Forms.CheckBox cbShowMap;
     }
 }
 
